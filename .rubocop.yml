@@ -1,1 +1,10 @@
 inherit_from: .rubocop_todo.yml
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false

@@ -1,0 +1,20 @@
+h1
+  | Projects
+
+- @projects.group_by { |p| p.milestone.number }.each do |milestone_number, projects|
+
+  .projects.clearfix style='clear: left'
+    - milestone = Github::Client.client.milestone(ProjectDefinition::REPOS, milestone_number)
+
+    br
+    h2
+      = milestone.title
+      span
+        a href=(milestone.html_url)
+          i.icon.external
+    p
+      = milestone.description
+
+    - projects.each do |project|
+      = render project
+

@@ -1,0 +1,12 @@
+h1
+  = @project.title
+
+a href=(projects_path) [List]
+'
+a href=(@project.github_url) [Edit]
+
+.canvas.points
+  - %w(issue objective todo kpi base).each do |point_name|
+    - point = @project.points_with_hash[point_name]
+    - if point
+      = render point

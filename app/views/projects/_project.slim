@@ -1,0 +1,22 @@
+a.ui.card href=(project_path(project.number)) style='float: left; margin: 3px; height: 160px'
+  .content
+    .meta
+      span
+        = project.milestone.title
+        '
+
+        | ##{project.number}
+      - project.labels.each do |label|
+        span.right
+          = label.title
+    .header
+      = project.title
+  .extra.content
+    span
+      i.icon.checkmark.box
+      - done_count = project.points_with_hash['todo']&.list&.select(&:done?)&.count
+      - todo_count = project.points_with_hash['todo']&.list&.count
+      | 0% done (#{done_count}/#{todo_count})
+    span.right.floated
+      i.icon.external
+      | 0% accomplish
